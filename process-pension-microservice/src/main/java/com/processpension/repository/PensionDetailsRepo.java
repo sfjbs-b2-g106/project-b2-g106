@@ -9,4 +9,6 @@ import com.processpension.entity.PensionDetail;
 @Repository
 public interface PensionDetailsRepo extends JpaRepository<PensionDetail, String>{
 
+	
+
 }

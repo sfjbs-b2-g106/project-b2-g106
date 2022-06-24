@@ -1,10 +1,10 @@
 package com.processpension.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.stereotype.Service;
 
-
-import com.processpension.entity.PensionDetail;
 import com.processpension.entity.PensionDetail;
 import com.processpension.repository.PensionDetailsRepo;
 
@@ -12,10 +12,13 @@ import com.processpension.repository.PensionDetailsRepo;
 public class ProcessPensionServiceImpl implements ProcessPensionService {
 	 
 	@Autowired
-	PensionDetailsRepo pensionDetailsRepo;
+	public PensionDetailsRepo pensionDetailsRepo;
+	
+	
+	PensionDetail pensionDetail = new PensionDetail();
 	
 	@Override
-	public PensionDetail calulatePensionAmount(PensionDetail pensionDetail) {
+	public PensionDetail getPensionDetail(String adhaarNumber) {
 		double pensionAmount = 0;
 		if (pensionDetail.getPensionType().equalsIgnoreCase("self")) {
 			pensionAmount = (0.8*pensionDetail.getSalary() + pensionDetail.getAllowance());
@@ -32,9 +35,12 @@ public class ProcessPensionServiceImpl implements ProcessPensionService {
 	}
 
 	@Override
-	public String savePensioner(PensionDetail pensioner) {
-		PensionDetail savedPensioner = pensionDetailsRepo.save(pensioner);
-		return savedPensioner.getAdhaarNumber();
+	public String savePensionDetail(PensionDetail pensionDetail) {
+		PensionDetail savedPensionDetail = pensionDetailsRepo.save(pensionDetail);
+		return savedPensionDetail.getAdhaarNumber();
 	}
+
+
+
 
 }

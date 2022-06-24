@@ -1,6 +1,8 @@
 package com.processpension.entity;
 
 import javax.persistence.Entity;
+
+
 import javax.persistence.Id;
 @Entity
 public class PensionDetail {
